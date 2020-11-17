@@ -19,9 +19,9 @@ SCRIPT_DIR=$(pwd)
 # build
 echo "$SCRIPT_NAME build zowe launcher ..."
 cd "$SCRIPT_DIR/content"
-STEPLIB=CBC.SCCNCMP make
+make --makefile=zosMakefile
 
 # clean up content folder
 echo "$SCRIPT_NAME cleaning up pax folder ..."
 cd "$SCRIPT_DIR/content"
-rm -fr Jenkinsfile Makefile src .git*
+rm -fr Jenkinsfile Makefile zosMakefile src .git*
