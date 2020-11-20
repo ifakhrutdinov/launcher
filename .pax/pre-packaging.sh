@@ -19,7 +19,7 @@ SCRIPT_DIR=$(pwd)
 # build
 echo "$SCRIPT_NAME build zowe launcher ..."
 cd "$SCRIPT_DIR/content"
-make -f zosMakefile
+STEPLIB=CBC.SCCNCMP make -f zosMakefile
 
 # clean up content folder
 echo "$SCRIPT_NAME cleaning up pax folder ..."
