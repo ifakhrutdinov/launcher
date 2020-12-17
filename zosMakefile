@@ -9,8 +9,8 @@
 ################################################################################
 
 # environment
-CC = xlclang
-LD = xlclang
+CC = njsc
+LD = njsc
 
 LAUNCHER_TARGET = bin/zowe_launcher
 
@@ -27,14 +27,14 @@ CFLAGS = -O -D_OPEN_THREADS -D_XOPEN_SOURCE=600 \
 all: $(LAUNCHER_TARGET)
 
 $(LAUNCHER_TARGET): main.o
-	mkdir -p bin
-	$(LD) -o $(LAUNCHER_TARGET) $^ || { $(RM) $@; exit 1; }
-	cp -X $(LAUNCHER_TARGET) "//'${USER}.ZL.LOADLIB(ZLAUNCH)'"
+    mkdir -p bin
+    $(LD) -o $(LAUNCHER_TARGET) $^ || { $(RM) $@; exit 1; }
+    # cp -X $(LAUNCHER_TARGET) "//'${USER}.ZL.LOADLIB(ZLAUNCH)'"
 
 %.o: src/%.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+    $(CC) $(CFLAGS) -o $@ -c $<
 
 .PHONY: clean
 clean:
-	$(RM) -f $(LAUNCHER_TARGET) *.o *.lst
+    $(RM) -f $(LAUNCHER_TARGET) *.o *.lst
 
